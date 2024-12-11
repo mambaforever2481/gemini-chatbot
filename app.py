@@ -1,3 +1,4 @@
+#import all required modules and libraries
 import os
 from PyPDF2 import PdfReader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -10,14 +11,14 @@ from langchain.chains.question_answering import load_qa_chain
 from langchain.prompts import PromptTemplate
 from dotenv import load_dotenv
 
-load_dotenv()
-os.getenv("GOOGLE_API_KEY")
-genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+load_dotenv() # Load
+os.getenv("GOOGLE_API_KEY") #get api key
+genai.configure(api_key=os.getenv("GOOGLE_API_KEY")) #configure api key
 
 # read all pdf files and return text
 
 
-def get_pdf_text(pdf_docs):
+def get_pdf_text(pdf_docs): 
     text = ""
     for pdf in pdf_docs:
         pdf_reader = PdfReader(pdf)
@@ -44,6 +45,7 @@ def get_vector_store(chunks):
     vector_store.save_local("faiss_index")
 
 
+#Provide context for the LLM
 def get_conversational_chain():
     prompt_template = """
     You are an assistant for the Ivy Tech School of Information Technology. The data given relates to the courses at the school. Answer the question as detailed as possible from the provided context, make sure to provide all the details, if the answer is not in
@@ -64,12 +66,12 @@ def get_conversational_chain():
     return chain
 
 
-def clear_chat_history():
+def clear_chat_history(): #Function to clear the chat history
     st.session_state.messages = [
         {"role": "assistant", "content": "Upload PDFs and ask a question!"}]
 
 
-def user_input(user_question):
+def user_input(user_question): #Function to get the user input
     embeddings = GoogleGenerativeAIEmbeddings(
         model="models/embedding-001")  # type: ignore
 
@@ -85,7 +87,7 @@ def user_input(user_question):
     return response
 
 
-def main():
+def main(): #Main function
     st.set_page_config(
         page_title="Gemini Chatbot",
     )
