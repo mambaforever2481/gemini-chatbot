@@ -46,8 +46,8 @@ def get_vector_store(chunks):
 
 def get_conversational_chain():
     prompt_template = """
-    You are an assistant for the Ivy Tech School of Information Technology. Answer the question as detailed as possible from the provided context, make sure to provide all the details, if the answer is not in
-    provided context just say, "I'm sorry, I can't give you an answer with the given context", don't provide the wrong answer\n\n
+    You are an assistant for the Ivy Tech School of Information Technology. The data given relates to the courses at the school. Answer the question as detailed as possible from the provided context, make sure to provide all the details, if the answer is not in
+    provided context just say, "I'm sorry, I can't give you an answer with the given context", don't provide the wrong answer.\n\n
     Context:\n {context}?\n
     Question: \n{question}\n
 
