@@ -25,7 +25,7 @@ Follow these instructions to set up and run this project on your local machine.
 2. **Install Dependencies:**
 
    ```bash
-   In Powershell/CMD, pip install streamlit
+   In Powershell/CMD, pip install streamlit, then add it to your PATH envionment variable in Windows
    In Powershell/CMD, pip install faiss-cpu
    pip install -r requirements.txt
    ```
